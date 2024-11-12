@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sound Buttons</title>
+  <style>
+      /* styles.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.sound-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 20px 40px;
+  font-size: 24px;
+  margin: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sound-button:hover {
+  background-color: #45a049;
+}
+
+.sound-button:focus {
+  outline: none;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <button id="themeButton" class="sound-button" onclick="playSound('theme')">Theme</button>
+    <button id="laughButton" class="sound-button" onclick="playSound('laugh')">Laugh Track</button>
+    <button id="clapButton" class="sound-button" onclick="playSound('clap')">Clapping</button>
+    <button id="clapButton" class="sound-button" onclick="playSound('gasp')">Gasp</button>
+  </div>
+
+  <audio id="themeAudio" src="theme.mp3"></audio>
+  <audio id="laughAudio" src="laugh.mp3"></audio>
+  <audio id="clapAudio" src="clap.mp3"></audio>
+  <audio id="gaspAudio" src="clap.mp3"></audio>
+
+  <script>// script.js
+function playSound(soundType) {
+  let audioElement;
+  
+  if (soundType === 'theme') {
+    audioElement = document.getElementById('themeAudio');
+  } else if (soundType === 'laugh') {
+    audioElement = document.getElementById('laughAudio');
+  } else if (soundType === 'clap') {
+    audioElement = document.getElementById('clapAudio');
+  }
+
+  if (audioElement) {
+    audioElement.currentTime = 0; // Reset audio to the beginning
+    audioElement.play();
+  }
+}
+
+// Keyboard event listener
+document.addEventListener('keydown', function(event) {
+  if (event.key === '1') {
+    playSound('theme');
+  } else if (event.key === '2') {
+    playSound('laugh');
+  } else if (event.key === '3') {
+    playSound('clap');
+  }
+  else if (event.key === '4') {
+    playSound('Gasp');
+  }
+});
+</script>
+</body>
+</html>
